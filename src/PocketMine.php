@@ -17,7 +17,7 @@
  * @link http://www.pocketmine.net/
  *
  *
-*/
+ */
 
 declare(strict_types=1);
 
@@ -37,21 +37,42 @@ namespace pocketmine {
 	use pocketmine\utils\Utils;
 	use pocketmine\wizard\SetupWizard;
 	use Symfony\Component\Filesystem\Path;
+	use function class_exists;
+	use function count;
 	use function defined;
+	use function dirname;
+	use function error_reporting;
+	use function explode;
 	use function extension_loaded;
+	use function file_exists;
 	use function function_exists;
 	use function getcwd;
+	use function getenv;
 	use function getopt;
+	use function ini_get;
+	use function ini_set;
+	use function is_array;
 	use function is_dir;
+	use function is_file;
+	use function is_string;
 	use function mkdir;
+	use function opcache_get_status;
+	use function php_ini_loaded_file;
+	use function php_sapi_name;
 	use function phpversion;
 	use function preg_match;
 	use function preg_quote;
 	use function printf;
 	use function realpath;
+	use function usleep;
 	use function version_compare;
+	use function xdebug_info;
 	use const DIRECTORY_SEPARATOR;
+	use const PHP_BINARY;
 	use const PHP_EOL;
+	use const PHP_INT_SIZE;
+	use const PHP_VERSION;
+	use const ZEND_DEBUG_BUILD;
 
 	require_once __DIR__ . '/VersionInfo.php';
 
@@ -125,8 +146,8 @@ namespace pocketmine {
 		}
 
 		if(($pmmpthread_version = phpversion("pmmpthread")) !== false){
-			if(version_compare($pmmpthread_version, "6.1.0") < 0 || version_compare($pmmpthread_version, "7.0.0") >= 0){
-				$messages[] = "pmmpthread ^6.1.0 is required, while you have $pmmpthread_version.";
+			if(version_compare($pmmpthread_version, "6.4.0") < 0 || version_compare($pmmpthread_version, "7.0.0") >= 0){
+				$messages[] = "pmmpthread ^6.4.0 is required, while you have $pmmpthread_version.";
 			}
 		}
 
@@ -282,6 +303,12 @@ JIT_WARNING
 			}
 		}
 
+		if(!class_exists("pmmp\snooze\SleeperHandler")){ // i dont like this :c
+			critical_error("Binary dependences are out of sync.");
+			critical_error("ext-pmmpthread has been built without 'Snooze'");
+			exit(1);
+		}
+
 		ErrorToExceptionHandler::set();
 
 		if(count(getopt("", [BootstrapOptions::VERSION])) > 0){
@@ -324,6 +351,7 @@ JIT_WARNING
 			critical_error("Unable to create plugin directory at $pluginPath. Check that the target location is accessible by the current user.");
 			exit(1);
 		}
+
 		$pluginPath = realpath($pluginPath) . DIRECTORY_SEPARATOR;
 
 		//Logger has a dependency on timezone
