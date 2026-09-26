@@ -303,7 +303,7 @@ JIT_WARNING
 			}
 		}
 
-		if(!class_exists("pmmp\snooze\SleeperHandler")){ // i dont like this :c
+		if(!class_exists("pocketmine\snooze\SleeperHandler")){ // i dont like this :c
 			critical_error("Binary dependences are out of sync.");
 			critical_error("ext-pmmpthread has been built without 'Snooze'");
 			exit(1);
