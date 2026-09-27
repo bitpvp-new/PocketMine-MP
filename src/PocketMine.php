@@ -136,7 +136,8 @@ namespace pocketmine {
 			"spl" => "SPL",
 			"yaml" => "YAML",
 			"zip" => "Zip",
-			"zlib" => "Zlib"
+			"zlib" => "Zlib",
+			"nbt" => "NBT"
 		];
 
 		foreach($extensions as $ext => $name){
