@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7f8bc2bfadaf54dedc9ca051159ce755",
+    "content-hash": "245bc2d403e3cf71868a17b2542bd81e",
     "packages": [
         {
             "name": "adhocore/json-comment",
@@ -145,26 +145,26 @@
         },
         {
             "name": "axolotl-pm/bedrock-protocol",
-            "version": "62.0.0+bedrock-1.26.50",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bitpvp-new/BedrockProtocol.git",
-                "reference": "0e13c077d1060ae9e293908eff81fbef600ead5c"
+                "reference": "023dec9511237d507baac4d2c4273506d0224551"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bitpvp-new/BedrockProtocol/zipball/0e13c077d1060ae9e293908eff81fbef600ead5c",
-                "reference": "0e13c077d1060ae9e293908eff81fbef600ead5c",
+                "url": "https://api.github.com/repos/bitpvp-new/BedrockProtocol/zipball/023dec9511237d507baac4d2c4273506d0224551",
+                "reference": "023dec9511237d507baac4d2c4273506d0224551",
                 "shasum": ""
             },
             "require": {
                 "ext-encoding": "~1.0.0",
                 "ext-json": "*",
+                "ext-nbt": "*",
                 "php": "^8.1",
                 "pocketmine/binaryutils": "^0.2.0",
                 "pocketmine/color": "^0.2.0 || ^0.3.0",
                 "pocketmine/math": "^0.3.0 || ^0.4.0 || ^1.0.0",
-                "pocketmine/nbt": "^1.0.0",
                 "ramsey/uuid": "^4.1"
             },
             "require-dev": {
@@ -173,6 +173,7 @@
                 "phpstan/phpstan-strict-rules": "^2.0.0",
                 "phpunit/phpunit": "^9.5 || ^10.0 || ^11.0"
             },
+            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -194,9 +195,9 @@
             ],
             "description": "An implementation of the Minecraft: Bedrock Edition protocol in PHP",
             "support": {
-                "source": "https://github.com/bitpvp-new/BedrockProtocol/tree/62.0.0+bedrock-1.26.50"
+                "source": "https://github.com/bitpvp-new/BedrockProtocol/tree/master"
             },
-            "time": "2026-09-17T18:23:29+00:00"
+            "time": "2026-09-27T15:19:43+00:00"
         },
         {
             "name": "axolotl-pm/xoroshiro128pp",
@@ -609,50 +610,6 @@
             },
             "abandoned": true,
             "time": "2023-08-03T12:56:33+00:00"
-        },
-        {
-            "name": "pocketmine/nbt",
-            "version": "1.2.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/pmmp/NBT.git",
-                "reference": "51b8d6a97065fb93e0b4f660b65164b6e1ed2fff"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/pmmp/NBT/zipball/51b8d6a97065fb93e0b4f660b65164b6e1ed2fff",
-                "reference": "51b8d6a97065fb93e0b4f660b65164b6e1ed2fff",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^7.4 || ^8.0",
-                "php-64bit": "*",
-                "pocketmine/binaryutils": "^0.2.0"
-            },
-            "require-dev": {
-                "phpstan/extension-installer": "^1.0",
-                "phpstan/phpstan": "2.1.27",
-                "phpstan/phpstan-phpunit": "^2.0",
-                "phpstan/phpstan-strict-rules": "^2.0",
-                "phpunit/phpunit": "^9.5"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "pocketmine\\nbt\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "LGPL-3.0"
-            ],
-            "description": "PHP library for working with Named Binary Tags",
-            "support": {
-                "issues": "https://github.com/pmmp/NBT/issues",
-                "source": "https://github.com/pmmp/NBT/tree/1.2.0"
-            },
-            "abandoned": true,
-            "time": "2025-09-19T18:09:30+00:00"
         },
         {
             "name": "pocketmine/raklib",
@@ -2781,6 +2738,12 @@
     ],
     "aliases": [
         {
+            "package": "axolotl-pm/bedrock-protocol",
+            "version": "9999999-dev",
+            "alias": "62.0.0+bedrock-1.26.50",
+            "alias_normalized": "62.0.0.0"
+        },
+        {
             "package": "pocketmine/raklib",
             "version": "dev-ext-encoding",
             "alias": "1.2.1",
@@ -2789,6 +2752,7 @@
     ],
     "minimum-stability": "stable",
     "stability-flags": {
+        "axolotl-pm/bedrock-protocol": 20,
         "pocketmine/raklib": 20,
         "pocketmine/raklib-ipc": 20
     },
@@ -2826,7 +2790,8 @@
     },
     "platform-dev": {},
     "platform-overrides": {
-        "php": "8.1.0"
+        "php": "8.1.0",
+        "ext-nbt": "1.0.0"
     },
     "plugin-api-version": "2.6.0"
 }
