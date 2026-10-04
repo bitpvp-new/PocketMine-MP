@@ -371,6 +371,8 @@ class World implements ChunkManager{
 
 	public float $tickRateTime = 0;
 
+	private bool $defaultTime;
+
 	private bool $doingTick = false;
 
 	private bool $unloaded = false;
@@ -556,6 +558,7 @@ class World implements ChunkManager{
 		}
 		$this->tickedBlocksPerSubchunkPerTick = $cfg->getPropertyInt(YmlServerProperties::CHUNK_TICKING_BLOCKS_PER_SUBCHUNK_PER_TICK, self::DEFAULT_TICKED_BLOCKS_PER_SUBCHUNK_PER_TICK);
 		$this->maxConcurrentChunkPopulationTasks = $cfg->getPropertyInt(YmlServerProperties::CHUNK_GENERATION_POPULATION_QUEUE_SIZE, 2);
+		$this->defaultTime = $cfg->getPropertyInt(YmlServerProperties::LEVEL_SETTINGS_TIME, 0) > 0;
 
 		$this->initRandomTickBlocksFromConfig($cfg);
 
@@ -931,11 +934,12 @@ class World implements ChunkManager{
 	 * @internal
 	 */
 	public function sendTime(Player ...$targets) : void{
+		$time = $this->defaultTime ? self::TIME_DAY : $this->time;
 		if(count($targets) === 0){
 			$targets = $this->players;
 		}
 		foreach($targets as $player){
-			$player->getNetworkSession()->syncWorldTime($this->time);
+			$player->getNetworkSession()->syncWorldTime($time);
 		}
 	}
 

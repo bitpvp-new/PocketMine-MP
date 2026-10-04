@@ -106,7 +106,7 @@ class StatusCommand extends VanillaCommand{
 		self::send($sender, l10n::pocketmine_command_status_network_upload(self::formatBandwidth($bandwidth->getSend()->getAverageBytes())));
 		self::send($sender, l10n::pocketmine_command_status_network_download(self::formatBandwidth($bandwidth->getReceive()->getAverageBytes())));
 
-		self::send($sender, l10n::pocketmine_command_status_threads(TextFormat::RED . Process::getThreadCount()));
+		self::send($sender, l10n::pocketmine_command_status_threads(TextFormat::RED . Process::getInternalThreadCount()));
 
 		self::send($sender, l10n::pocketmine_command_status_memory_mainThread(self::formatMemory($mUsage[0])));
 		self::send($sender, l10n::pocketmine_command_status_memory_total(self::formatMemory($mUsage[1])));

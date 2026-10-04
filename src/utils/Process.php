@@ -113,15 +113,17 @@ final class Process{
 
 	public static function getThreadCount() : int{
 		if(Utils::getOS() === Utils::OS_LINUX || Utils::getOS() === Utils::OS_ANDROID){
-			$status = @file_get_contents("/proc/self/status");
-			if($status === false) throw new AssumptionFailedError("/proc/self/status should always be accessible");
+			$status = Utils::assumeNotFalse(@file_get_contents("/proc/self/status"), "/proc/self/status should always be accessible");
 			if(preg_match("/Threads:[ \t]+([0-9]+)/", $status, $matches) > 0){
 				return (int) $matches[1];
 			}
 		}
 
 		//TODO: more OS
+		return self::getInternalThreadCount();
+	}
 
+	public static function getInternalThreadCount() : int{
 		return Thread::getRunningCount() + 1; //pmmpthread doesn't count the main thread
 	}
 

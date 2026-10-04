@@ -69,6 +69,7 @@ final class YmlServerProperties{
 	public const DEBUG_LEVEL = 'debug.level';
 	public const LEVEL_SETTINGS = 'level-settings';
 	public const LEVEL_SETTINGS_DEFAULT_FORMAT = 'level-settings.default-format';
+	public const LEVEL_SETTINGS_TIME = 'level-settings.time';
 	public const MEMORY = 'memory';
 	public const MEMORY_ASYNC_WORKER_HARD_LIMIT = 'memory.async-worker-hard-limit';
 	public const MEMORY_CHECK_RATE = 'memory.check-rate';
