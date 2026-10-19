@@ -37,6 +37,7 @@
       "axolotl-pm/bedrock-data": "~6.9.0+bedrock-1.26.50",
       "axolotl-pm/bedrock-item-upgrade-schema": "~1.19.0+bedrock-1.26.50",
       "axolotl-pm/bedrock-protocol": "dev-master as 62.0.0+bedrock-1.26.50",
+      "axolotl-pm/nethernet": "^0.3.1",
       "axolotl-pm/xoroshiro128pp": "^0.1.0",
       "netresearch/jsonmapper": "~v6.0.0",
       "pocketmine/binaryutils": "^0.2.1",
@@ -45,9 +46,10 @@
       "pocketmine/errorhandler": "^0.7.0",
       "pocketmine/log": "^0.4.0",
       "pocketmine/math": "~1.0.0",
-      "ext-nbt": "*",
-      "pocketmine/raklib": "dev-ext-encoding as 1.2.1",
-      "pocketmine/raklib-ipc": "dev-ext-encoding",
+      "pocketmine/nbt": "~1.2.0",
+      "pocketmine/raklib": "~1.2.0",
+      "pocketmine/raklib-ipc": "~1.0.0",
+      "pocketmine/snooze": "^0.5.0",
       "ramsey/uuid": "~4.9.0",
       "symfony/filesystem": "~6.4.0"
    },
@@ -81,17 +83,10 @@
    },
    "config": {
       "platform": {
-         "php": "8.1.0",
-         "ext-nbt": "1.0.0"
+         "php": "8.1.0"
       },
       "sort-packages": true
    },
-   "repositories": [
-      {
-         "type": "vcs",
-         "url": "https://github.com/bitpvp-new/BedrockProtocol.git"
-      }
-   ],
    "scripts": {
       "make-devtools": "@php -dphar.readonly=0 tests/plugins/DevTools/src/ConsoleScript.php --make ./ --relative tests/plugins/DevTools --out plugins/DevTools.phar",
       "make-server": [
