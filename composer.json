@@ -80,6 +80,12 @@
          "pocketmine\\phpstan\\rules\\": "tests/phpstan/rules"
       }
    },
+   "repositories": [
+      {
+         "type": "vcs",
+         "url": "https://github.com/bitpvp-new/BedrockProtocol.git"
+      }
+   ],
    "config": {
       "platform": {
          "php": "8.1.0"
